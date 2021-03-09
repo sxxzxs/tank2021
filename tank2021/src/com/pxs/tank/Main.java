@@ -9,6 +9,7 @@ public class Main {
 		
 		TankFrame tf = new TankFrame();
 		
+		//循环，让线程隔50ms调用一次repaint
 		while(true) {
 			Thread.sleep(50);
 			tf.repaint();	//调用一次repaint默认调用一次paint
