@@ -10,6 +10,8 @@ import java.awt.event.WindowEvent;
 //继承是为了重写paint方法
 public class TankFrame extends Frame {
 	int x = 200, y = 200;
+	Dir dir = Dir.DOWN;
+	private static final int SPEED = 10;
 	
 	public TankFrame() {
 		//Frame f = new Frame();		//新建一窗口,
@@ -34,6 +36,20 @@ public class TankFrame extends Frame {
 	@Override
 	public void paint(Graphics g) {
 		g.fillRect(x, y, 50, 50);	//填充一个正方形
+		switch(dir) {
+		case LEFT:
+			x -= SPEED;
+			break;
+		case UP:
+			y -= SPEED;
+			break;
+		case RIGHT:
+			x += SPEED;
+			break;
+		case DOWN:
+			y += SPEED;
+			break;
+		}
 		//x += 10;
 		//y += 10;
 	}
@@ -72,6 +88,8 @@ public class TankFrame extends Frame {
 			}
 			//x += 200;
 			//repaint();	//默认调用一次paint
+			
+			setMainTankDir();
 		}
 		
 		//一个键被抬起来时候调用
@@ -99,6 +117,14 @@ public class TankFrame extends Frame {
 			default:
 				break;
 			}
+			setMainTankDir();
+		}
+
+		private void setMainTankDir() {
+			if(bL) dir = Dir.LEFT;
+			if(bU) dir = Dir.UP;
+			if(bR) dir = Dir.RIGHT;
+			if(bD) dir = Dir.DOWN;
 		}
 		
 		
