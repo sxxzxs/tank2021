@@ -5,8 +5,18 @@ import java.awt.Graphics;
 public class Tank {
 	private int x, y;
 	private Dir dir = Dir.DOWN;
+	private static final int SPEED = 10;
 	
+	private boolean moving = false;
 	
+	public boolean isMoving() {
+		return moving;
+	}
+
+	public void setMoving(boolean moving) {
+		this.moving = moving;
+	}
+
 	public Dir getDir() {
 		return dir;
 	}
@@ -14,8 +24,7 @@ public class Tank {
 	public void setDir(Dir dir) {
 		this.dir = dir;
 	}
-
-	private static final int SPEED = 10;
+	
 	public Tank(int x, int y, Dir dir) {
 		super();
 		this.x = x;
@@ -26,6 +35,18 @@ public class Tank {
 	public void paint(Graphics g) {
 		
 		g.fillRect(x, y, 50, 50);	//填充一个正方形
+		
+		move();
+				
+		//x += 10;
+		//y += 10;
+		
+	}
+
+	private void move() {
+		
+		if(!moving) return;
+		
 		switch(dir) {
 		case LEFT:
 			x -= SPEED;
@@ -40,8 +61,6 @@ public class Tank {
 			y += SPEED;
 			break;
 		}
-		//x += 10;
-		//y += 10;
 		
 	}
 	
