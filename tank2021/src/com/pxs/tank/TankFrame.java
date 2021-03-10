@@ -12,7 +12,7 @@ import java.awt.event.WindowEvent;
 //继承是为了重写paint方法
 public class TankFrame extends Frame {
 	
-	Tank myTank = new Tank(200,200,Dir.DOWN);
+	Tank myTank = new Tank(200,200,Dir.DOWN,this);
 	Bullet b = new Bullet(300, 300, Dir.DOWN);
 	static final int GAME_WIDTH = 800,GAME_HEIGHT = 600;
 	
@@ -117,6 +117,11 @@ public class TankFrame extends Frame {
 			}
 			case KeyEvent.VK_DOWN: {
 				bD = false;
+				break;
+			}
+			//按下ctrl键开火
+			case KeyEvent.VK_CONTROL:{
+				myTank.fire();
 				break;
 			}
 			
