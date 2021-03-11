@@ -5,7 +5,8 @@ import java.awt.Graphics;
 
 public class Bullet {
 	private static final int SPEED = 10;
-	private static int WIDTH = 15, HEIGHT = 15;
+	public static int WIDTH = ResourceMgr.bulletD.getWidth();	//子弹图片的宽度
+	public static int HEIGHT = ResourceMgr.bulletD.getHeight();
 	
 	private int x, y;
 	private Dir dir;
