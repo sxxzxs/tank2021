@@ -9,6 +9,11 @@ public class Main {
 		
 		TankFrame tf = new TankFrame();
 		
+		//初始化敌方坦克
+		for(int i = 0; i < 5; i++) {
+			tf.tanks.add(new Tank(50 + i *80,200,Dir.DOWN,tf));
+		}
+		
 		//循环，让线程隔50ms调用一次repaint
 		while(true) {
 			Thread.sleep(50);
