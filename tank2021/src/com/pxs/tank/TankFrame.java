@@ -15,10 +15,10 @@ import java.util.List;
 //继承是为了重写paint方法
 public class TankFrame extends Frame {
 	
-	Tank myTank = new Tank(200,400,Dir.DOWN,this);
+	Tank myTank = new Tank(200,400,Dir.DOWN,Group.GOOD,this);
 	List<Bullet> bullets = new ArrayList<>();	//加入容器发多颗子弹
 	List<Tank> tanks = new ArrayList<>();
-	Bullet b = new Bullet(300, 300, Dir.DOWN,this);
+	Bullet b = new Bullet(300, 300, Dir.DOWN,Group.BAD,this);
 	static final int GAME_WIDTH = 800,GAME_HEIGHT = 600;
 	
 	public TankFrame() {

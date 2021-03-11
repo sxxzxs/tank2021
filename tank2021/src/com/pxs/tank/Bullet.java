@@ -14,13 +14,24 @@ public class Bullet {
 	private TankFrame tf = null;
 	private boolean living = true;
 	
-	public Bullet(int x, int y, Dir dir,TankFrame tf) {		
+	private Group group = Group.BAD;
+	
+	public Bullet(int x, int y, Dir dir,Group group,TankFrame tf) {		
 		this.x = x;
 		this.y = y;
 		this.dir = dir;
+		this.group = group;
 		this.tf = tf;
 	}
 	
+	public Group getGroup() {
+		return group;
+	}
+
+	public void setGroup(Group group) {
+		this.group = group;
+	}
+
 	public void paint(Graphics g) {
 			
 			if(!living) {
@@ -76,6 +87,11 @@ public class Bullet {
 	}
 
 	public void collideWith(Tank tank) {
+		
+		if(this.group == tank.getGroup()) return;
+		
+		//TODO:完全可以用一个rect来记录的位置
+		
 		//以子弹为中心的矩形
 		Rectangle rect1 = new Rectangle(this.x,this.y,WIDTH,HEIGHT);
 		//以坦克为中心的矩形
