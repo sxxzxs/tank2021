@@ -19,6 +19,8 @@ public class TankFrame extends Frame {
 	List<Bullet> bullets = new ArrayList<>();	//加入容器发多颗子弹
 	List<Tank> tanks = new ArrayList<>();
 	Bullet b = new Bullet(300, 300, Dir.DOWN,Group.BAD,this);
+	Explode e = new Explode(100,100,this);
+	
 	static final int GAME_WIDTH = 800,GAME_HEIGHT = 600;
 	
 	public TankFrame() {
@@ -75,12 +77,15 @@ public class TankFrame extends Frame {
 			tanks.get(i).paint(g);
 		}
 		
+		//看看每个子弹和所有的坦克碰撞
 		for(int i = 0; i <bullets.size(); i++) {
 			for(int j = 0; j < tanks.size(); j++) {
 				bullets.get(i).collideWith(tanks.get(j));
-			}
+			}		
 			
 		}
+		
+		e.paint(g);	
 		
 		/*
 		 * for(Iterator<Bullet> it = bullets.iterator();it.hasNext()) { Bullet b =
