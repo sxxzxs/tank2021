@@ -2,10 +2,13 @@ package com.pxs.tank;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.util.Random;
 
 public class Tank {
 	private int x, y;
+	
+	Rectangle rect = new Rectangle();
 	
 	private Dir dir = Dir.DOWN;
 	private static final int SPEED = 2;
@@ -70,6 +73,11 @@ public class Tank {
 		this.dir = dir;
 		this.group = group;
 		this.tf = tf;
+		
+		rect.x = this.x;
+		rect.y = this.y;
+		rect.width = WIDTH;
+		rect.height = HEIGHT;
 	}
 	
 	public void paint(Graphics g) {
@@ -121,7 +129,12 @@ public class Tank {
 		case DOWN:
 			y += SPEED;
 			break;
+						
 		}
+		
+		//更新rect位置
+		rect.x = this.x;
+		rect.y = this.y;
 		
 		//移动后通过产生随机数来打出随机炮弹
 		if(this.group  == Group.BAD && random.nextInt(100) > 95) this.fire();

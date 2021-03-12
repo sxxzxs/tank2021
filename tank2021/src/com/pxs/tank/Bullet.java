@@ -9,6 +9,8 @@ public class Bullet {
 	public static int WIDTH = ResourceMgr.bulletD.getWidth();	//子弹图片的宽度
 	public static int HEIGHT = ResourceMgr.bulletD.getHeight();
 	
+	Rectangle rect = new Rectangle();
+	
 	private int x, y;
 	private Dir dir;
 	private TankFrame tf = null;
@@ -22,6 +24,11 @@ public class Bullet {
 		this.dir = dir;
 		this.group = group;
 		this.tf = tf;
+		
+		rect.x = this.x;
+		rect.y = this.y;
+		rect.width = WIDTH;
+		rect.height = HEIGHT;
 	}
 	
 	public Group getGroup() {
@@ -81,6 +88,10 @@ public class Bullet {
 			break;
 		}
 		
+		//更新rect位置
+		rect.x = this.x;
+		rect.y = this.y;
+		
 		if(x < 0 || y < 0 || x > TankFrame.GAME_WIDTH || y>TankFrame.GAME_HEIGHT) living = false;
 		
 	
@@ -89,15 +100,8 @@ public class Bullet {
 	public void collideWith(Tank tank) {
 		
 		if(this.group == tank.getGroup()) return;
-		
-		//TODO:完全可以用一个rect来记录的位置
-		
-		//以子弹为中心的矩形
-		Rectangle rect1 = new Rectangle(this.x,this.y,WIDTH,HEIGHT);
-		//以坦克为中心的矩形
-		Rectangle rect2 = new Rectangle(tank.getX(),tank.getY(),tank.WIDTH,tank.HEIGHT);
-		
-		if(rect1.intersects(rect2)) {
+					
+		if(rect.intersects(tank.rect)) {
 			tank.die();
 			this.die();
 			int ex = tank.getX() +Tank.WIDTH/2 - Explode.WIDTH/2;
