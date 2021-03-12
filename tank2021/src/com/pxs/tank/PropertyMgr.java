@@ -16,6 +16,8 @@ public class PropertyMgr {
 		}
 	}
 	
+	//可以改成int getInt(key)
+	//也可以改成getString(key)
 	public static Object get(String key) {
 		if(props == null) return null;
 		return props.get(key);

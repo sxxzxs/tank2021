@@ -15,7 +15,7 @@ import java.util.List;
 //继承是为了重写paint方法
 public class TankFrame extends Frame {
 	
-	Tank myTank = new Tank(200,400,Dir.DOWN,Group.GOOD,this);
+	Tank myTank = new Tank(200,400,Dir.UP,Group.GOOD,this);
 	List<Bullet> bullets = new ArrayList<>();	//加入容器发多颗子弹
 	List<Tank> tanks = new ArrayList<>();
 	List<Explode> explodes = new ArrayList<>();

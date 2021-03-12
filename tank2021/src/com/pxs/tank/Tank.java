@@ -67,7 +67,7 @@ public class Tank {
 	}
 	
 	public Tank(int x, int y, Dir dir,Group group,TankFrame tf) {
-		super();
+		
 		this.x = x;
 		this.y = y;
 		this.dir = dir;
