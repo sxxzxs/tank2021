@@ -23,7 +23,7 @@ public class TankFrame extends Frame {
 	Bullet b = new Bullet(300, 300, Dir.DOWN,Group.BAD,this);
 	Explode e = new Explode(100,100,this);
 	
-	static final int GAME_WIDTH = 1080,GAME_HEIGHT = 960;
+	static final int GAME_WIDTH = 1080,GAME_HEIGHT = 750;
 	
 	public TankFrame() {
 		//Frame f = new Frame();		//新建一窗口,
