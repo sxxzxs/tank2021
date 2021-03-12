@@ -11,7 +11,7 @@ public class Explode {
 	
 	private int x, y;
 	
-	private boolean living = true;
+	//private boolean living = true;
 	TankFrame tf = null;
 	
 	private int step = 0;
@@ -30,8 +30,9 @@ public class Explode {
 		
 		g.drawImage(ResourceMgr.explodes[step++], x, y, null);
 		
+		//爆炸完便移除（十几张照片放完）
 		if(step >= ResourceMgr.explodes.length) 
-			step = 0;
+			tf.explodes.remove(this);
 	}
 	
 }
