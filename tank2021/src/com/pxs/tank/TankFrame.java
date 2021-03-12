@@ -21,7 +21,7 @@ public class TankFrame extends Frame {
 	Bullet b = new Bullet(300, 300, Dir.DOWN,Group.BAD,this);
 	Explode e = new Explode(100,100,this);
 	
-	static final int GAME_WIDTH = 800,GAME_HEIGHT = 600;
+	static final int GAME_WIDTH = 1080,GAME_HEIGHT = 960;
 	
 	public TankFrame() {
 		//Frame f = new Frame();		//新建一窗口,
@@ -130,6 +130,9 @@ public class TankFrame extends Frame {
 			//repaint();	//默认调用一次paint
 			
 			setMainTankDir();
+			
+			//加入坦克移动的声音
+			new Thread(()->new Audio("audio/tank_move.wav").play()).start();
 		}
 		
 		//一个键被抬起来时候调用
