@@ -124,8 +124,17 @@ public class Tank {
 		}
 		
 		//移动后通过产生随机数来打出随机炮弹
-		if(random.nextInt(10) > 8) this.fire();
+		if(this.group  == Group.BAD && random.nextInt(100) > 95) this.fire();
 		
+		if(this.group == Group.BAD && random.nextInt(100) > 95)
+		randomDir();
+		
+	}
+	
+	//让坦克随机向四个方向走动
+	private void randomDir() {
+		
+		this.dir = Dir.values()[random.nextInt(4)];		
 	}
 
 	public void fire() {
